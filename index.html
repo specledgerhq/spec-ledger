@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Spec Ledger — Device Specs & Product Comparisons</title>
+  <meta name="description" content="Fast, SEO-friendly device specification pages and side-by-side comparisons. Browse comparisons, explore specs, and find the best option for your needs." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- GitHub Pages (project site) canonical -->
+  <link rel="canonical" href="https://specledgerhq.github.io/spec-ledger/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Spec Ledger — Device Specs & Product Comparisons" />
+  <meta property="og:description" content="Fast, SEO-friendly device specification pages and side-by-side comparisons." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://specledgerhq.github.io/spec-ledger/" />
+
+  <style>
+    :root { --max: 1100px; --pad: 18px; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: #111; line-height: 1.55; background: #fff; }
+    header, main, footer { max-width: var(--max); margin: 0 auto; padding: 22px var(--pad); }
+    header { padding-top: 30px; }
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+    .logo {
+      width: 34px; height: 34px; border-radius: 10px;
+      border: 1px solid #e6e6e6; background: #fafafa;
+      display: grid; place-items: center; font-weight: 800;
+    }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; }
+    .badge { display: inline-block; padding: 6px 10px; border: 1px solid #ddd; border-radius: 999px; font-size: 12px; color: #333; background: #fff; }
+    h1 { margin: 16px 0 10px; font-size: clamp(26px, 3.2vw, 42px); letter-spacing: -0.02em; }
+    p { margin: 0 0 12px; }
+    .muted { color: #555; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .btn { display: inline-block; padding: 10px 14px; border-radius: 12px; border: 1px solid #111; text-decoration: none; color: #111; font-weight: 700; }
+    .btn.primary { background: #111; color: #fff; }
+    .grid { display: grid; gap: 14px; margin-top: 18px; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .card { border: 1px solid #e6e6e6; border-radius: 16px; padding: 14px; background: #fff; }
+    .card h2 { margin: 6px 0 8px; font-size: 18px; }
+    .card ul { margin: 8px 0 0; padding-left: 18px; }
+    .card a { margin-top: 12px; display: inline-block; }
+    .panel { border: 1px solid #e6e6e6; border-radius: 16px; padding: 14px; background: #fcfcfc; }
+    .panel h2 { margin: 0 0 10px; font-size: 18px; }
+    .links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .link { border: 1px solid #e6e6e6; border-radius: 14px; padding: 12px; background: #fff; text-decoration: none; color: inherit; }
+    .link strong { display: block; margin-bottom: 4px; }
+    .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .kpi { border: 1px solid #e6e6e6; border-radius: 16px; padding: 14px; background: #fff; }
+    .kpi .n { font-size: 22px; font-weight: 800; }
+    footer { padding-bottom: 34px; }
+    .fine { font-size: 13px; color: #666; }
+    @media (max-width: 900px) {
+      .cards { grid-template-columns: 1fr; }
+      .links { grid-template-columns: 1fr; }
+      .kpis { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <!-- Website schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Spec Ledger",
+    "description": "Device specs and comparison pages built from structured data.",
+    "url": "https://specledgerhq.github.io/spec-ledger/"
+  }
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="top">
+      <a class="brand" href="./" aria-label="Spec Ledger home">
+        <div class="logo" aria-hidden="true">SL</div>
+        <div>
+          <div style="font-weight:800; letter-spacing:-0.01em;">Spec Ledger</div>
+          <div class="muted" style="font-size:13px;">Device specs • Comparisons • Deals-ready</div>
+        </div>
+      </a>
+
+      <div class="badges" aria-label="Site highlights">
+        <span class="badge">Fast static pages</span>
+        <span class="badge">Reusable JSON specs</span>
+        <span class="badge">UK-friendly</span>
+      </div>
+    </div>
+
+    <h1>Device specifications and side-by-side product comparisons</h1>
+    <p class="muted">
+      Spec Ledger publishes structured specs and comparison pages so you can quickly see what’s different, choose the right model,
+      and (optionally) route to the best-value deals.
+    </p>
+
+    <div class="cta-row" role="navigation" aria-label="Primary actions">
+      <a class="btn primary" href="./compare/">Browse comparisons</a>
+      <a class="btn" href="./brands/">Browse by brand</a>
+      <a class="btn" href="./latest/">Latest pages</a>
+    </div>
+
+    <div class="grid">
+      <div class="kpis" aria-label="Quick site facts">
+        <div class="kpi">
+          <div class="n" id="kpiProducts">—</div>
+          <div class="muted">Products in database</div>
+        </div>
+        <div class="kpi">
+          <div class="n" id="kpiComparisons">—</div>
+          <div class="muted">Comparison pages</div>
+        </div>
+        <div class="kpi">
+          <div class="n" id="kpiUpdated">—</div>
+          <div class="muted">Last data update</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Popular comparisons</h2>
+        <div class="links">
+          <!-- Replace these with your real pages as you create them -->
+          <a class="link" href="./compare/google-pixel-10-vs-10-pro-vs-10-pro-xl.html">
+            <strong>Pixel 10 vs 10 Pro vs 10 Pro XL</strong>
+            <span class="muted">Quick differences + who each model is for</span>
+          </a>
+
+          <a class="link" href="./compare/iphone-xx-vs-iphone-xx-pro.html">
+            <strong>Example: iPhone (placeholder)</strong>
+            <span class="muted">Swap this for your next comparison page</span>
+          </a>
+
+          <a class="link" href="./compare/samsung-galaxy-xx-vs-xx-ultra.html">
+            <strong>Example: Galaxy (placeholder)</strong>
+            <span class="muted">Swap this for your next comparison page</span>
+          </a>
+
+          <a class="link" href="./compare/best-camera-phones.html">
+            <strong>Best camera phones (guide)</strong>
+            <span class="muted">A curated list page (great for SEO)</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="cards" aria-label="How it works">
+        <div class="card">
+          <h2>1) Structured specs</h2>
+          <p class="muted">Each device has a single “source of truth” spec.</p>
+          <ul>
+            <li>Consistent fields</li>
+            <li>Easy updates</li>
+            <li>Traceable changes via Git</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>2) Reusable data</h2>
+          <p class="muted">The same data powers product and comparison pages.</p>
+          <ul>
+            <li>No duplicated copy/paste</li>
+            <li>Fewer errors</li>
+            <li>Faster publishing</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>3) SEO-friendly pages</h2>
+          <p class="muted">Clean HTML pages designed to rank for “vs” searches.</p>
+          <ul>
+            <li>Fast load times</li>
+            <li>Clear headings</li>
+            <li>Schema-ready FAQs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" aria-label="Start here">
+      <h2>Start here</h2>
+      <p class="muted" style="margin-bottom:10px;">
+        Pick a path depending on what you’re trying to do right now.
+      </p>
+
+      <div class="links">
+        <a class="link" href="./compare/">
+          <strong>Compare devices</strong>
+          <span class="muted">Side-by-side tables, differences, and recommendations</span>
+        </a>
+
+        <a class="link" href="./devices/">
+          <strong>Browse all devices</strong>
+          <span class="muted">Product pages generated from structured specs</span>
+        </a>
+
+        <a class="link" href="./data/">
+          <strong>Explore the dataset</strong>
+          <span class="muted">Public JSON data (useful for developers)</span>
+        </a>
+
+        <a class="link" href="./about/">
+          <strong>About Spec Ledger</strong>
+          <span class="muted">Method, update cadence, and transparency</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="fine">
+      © <span id="y"></span> Spec Ledger. Data and availability may change. Always verify specs with manufacturer sources.
+    </p>
+    <p class="fine">
+      Built as a static site for speed. If you use affiliate links, disclose them clearly (recommended for trust).
+    </p>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      // OPTIONAL: Populate KPIs from a local JSON “database” if you create one.
+      // Create: ./data/database.json with shape:
+      // { "phones": [...], "comparisons": [...], "last_updated": "YYYY-MM-DD" }
+      (async () => {
+        try {
+          const url = new URL("./data/database.json", document.baseURI);
+          const db = await fetch(url).then(r => r.ok ? r.json() : null);
+          if (!db) return;
+
+          const products = Array.isArray(db.phones) ? db.phones.length : "—";
+          const comps = Array.isArray(db.comparisons) ? db.comparisons.length : "—";
+          const updated = db.last_updated || "—";
+
+          document.getElementById("kpiProducts").textContent = products;
+          document.getElementById("kpiComparisons").textContent = comps;
+          document.getElementById("kpiUpdated").textContent = updated;
+        } catch (_) {
+          // No-op: KPIs stay as dashes if database.json doesn’t exist yet
+        }
+      })();
+    </script>
+  </footer>
+</body>
+</html>
