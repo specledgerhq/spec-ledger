@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Compare Devices — Spec Ledger</title>
+  <meta name="description" content="Browse device comparison pages on Spec Ledger. Side-by-side specs and key differences to help you choose the right model." />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="canonical" href="https://specledgerhq.github.io/spec-ledger/compare/" />
+
+  <meta property="og:title" content="Compare Devices — Spec Ledger" />
+  <meta property="og:description" content="Browse device comparisons with side-by-side specs and key differences." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://specledgerhq.github.io/spec-ledger/compare/" />
+
+  <style>
+    :root { --max: 1100px; --pad: 18px; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: #111; line-height: 1.55; background: #fff; }
+    header, main, footer { max-width: var(--max); margin: 0 auto; padding: 22px var(--pad); }
+    header { padding-top: 30px; }
+    a { color: inherit; }
+    .top { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .brand { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .logo { width:34px; height:34px; border-radius:10px; border:1px solid #e6e6e6; background:#fafafa; display:grid; place-items:center; font-weight:800; }
+    .muted { color:#555; }
+    .badge { display:inline-block; padding:6px 10px; border:1px solid #ddd; border-radius:999px; font-size:12px; color:#333; background:#fff; }
+    h1 { margin: 14px 0 10px; font-size: clamp(26px, 3.2vw, 40px); letter-spacing:-0.02em; }
+    .search { margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; }
+    input[type="search"] {
+      flex: 1 1 280px;
+      padding: 11px 12px;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+    }
+    .btn {
+      display:inline-block;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid #111;
+      text-decoration:none;
+      font-weight:700;
+      background:#111;
+      color:#fff;
+      white-space:nowrap;
+    }
+    .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+    .card { border:1px solid #e6e6e6; border-radius:16px; padding:14px; background:#fff; }
+    .card h2 { margin: 6px 0 8px; font-size: 18px; }
+    .meta { font-size: 13px; color:#666; margin-top: 6px; }
+    .tagrow { display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px; }
+    .tag { font-size: 12px; border:1px solid #e6e6e6; background:#fafafa; border-radius: 999px; padding: 5px 9px; color:#333; }
+    .list { margin-top: 18px; border:1px solid #e6e6e6; border-radius:16px; overflow:hidden; }
+    .row { display:flex; gap:12px; justify-content:space-between; padding: 12px 14px; border-bottom:1px solid #eee; background:#fff; text-decoration:none; }
+    .row:last-child { border-bottom:none; }
+    .row:hover { background:#fcfcfc; }
+    .row strong { display:block; }
+    .row span { color:#555; }
+    footer { padding-bottom: 34px; }
+    .fine { font-size: 13px; color:#666; }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <!-- Optional: ItemList schema for comparisons -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "name":"Device comparisons",
+    "itemListElement":[
+      {
+        "@type":"ListItem",
+        "position":1,
+        "url":"https://specledgerhq.github.io/spec-ledger/compare/google-pixel-10-vs-10-pro-vs-10-pro-xl.html",
+        "name":"Google Pixel 10 vs Pixel 10 Pro vs Pixel 10 Pro XL"
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="top">
+      <a class="brand" href="../" aria-label="Spec Ledger home">
+        <div class="logo" aria-hidden="true">SL</div>
+        <div>
+          <div style="font-weight:800; letter-spacing:-0.01em;">Spec Ledger</div>
+          <div class="muted" style="font-size:13px;">Compare devices</div>
+        </div>
+      </a>
+
+      <span class="badge" aria-label="Status">Live</span>
+    </div>
+
+    <h1>Compare devices</h1>
+    <p class="muted">
+      Browse side-by-side comparison pages. Use search to quickly find a match (e.g., “Pixel”, “Pro”, “XL”).
+    </p>
+
+    <div class="search" role="search" aria-label="Search comparisons">
+      <input id="q" type="search" placeholder="Search comparisons…" autocomplete="off" />
+      <a class="btn" href="#all">View all</a>
+    </div>
+
+    <div class="grid" aria-label="Featured comparisons">
+      <div class="card">
+        <h2>Featured</h2>
+        <p class="muted">Start with the newest comparisons.</p>
+        <div class="tagrow">
+          <span class="tag">Latest</span>
+          <span class="tag">Most searched</span>
+          <span class="tag">Side-by-side</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>How to use</h2>
+        <p class="muted">Open a comparison and skim:</p>
+        <ul style="margin:8px 0 0; padding-left:18px;">
+          <li>Quick picks</li>
+          <li>Full spec table</li>
+          <li>“Which one should I buy?”</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Coming soon</h2>
+        <p class="muted">Brand hubs, filters, and auto-generated tables from JSON specs.</p>
+        <div class="meta">Tip: keep each device spec in <code>/data/phones/</code> and reuse it across pages.</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2 id="all">All comparisons</h2>
+
+    <!-- Add more rows as you publish more comparison pages -->
+    <div class="list" id="list" aria-label="Comparison list">
+      <a class="row" href="./google-pixel-10-vs-10-pro-vs-10-pro-xl.html" data-title="google pixel 10 vs 10 pro vs 10 pro xl pixel10 pixel-10 pro-xl">
+        <div>
+          <strong>Google Pixel 10 vs Pixel 10 Pro vs Pixel 10 Pro XL</strong>
+          <span class="muted">Key differences, who each model is for, and a side-by-side spec table.</span>
+          <div class="meta">Google Pixel • Pixel 10 series</div>
+        </div>
+        <div class="meta" aria-hidden="true">→</div>
+      </a>
+
+      <!-- Example placeholders (remove if you don’t want 404s) -->
+      <!--
+      <a class="row" href="./iphone-xx-vs-iphone-xx-pro.html" data-title="iphone xx vs iphone xx pro apple">
+        <div>
+          <strong>iPhone XX vs iPhone XX Pro</strong>
+          <span class="muted">Placeholder — create this page before enabling the link.</span>
+          <div class="meta">Apple • iPhone</div>
+        </div>
+        <div class="meta" aria-hidden="true">→</div>
+      </a>
+      -->
+    </div>
+  </main>
+
+  <footer>
+    <p class="fine">
+      © <span id="y"></span> Spec Ledger. Comparisons are informational. Specs can vary by region and configuration.
+    </p>
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      // Simple client-side filter (no backend needed)
+      const q = document.getElementById("q");
+      const rows = Array.from(document.querySelectorAll("#list .row"));
+
+      function filter() {
+        const term = (q.value || "").toLowerCase().trim();
+        rows.forEach(r => {
+          const hay = (r.getAttribute("data-title") || r.textContent || "").toLowerCase();
+          r.style.display = hay.includes(term) ? "" : "none";
+        });
+      }
+
+      q.addEventListener("input", filter);
+    </script>
+  </footer>
+</body>
+  </html>
