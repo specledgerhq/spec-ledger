@@ -1,0 +1,254 @@
+{
+  "dataset": {
+    "name": "SpecLedger – 2025 Phones (Manufacturer Specs Only)",
+    "version": "1.0.0",
+    "generated_at_utc": "2026-01-02T00:00:00Z",
+    "inclusion_rule": "Only devices with official manufacturer-published technical specification pages.",
+    "excluded_note": "Rumoured, leaked, regional-only, or ODM devices without stable manufacturer specs are intentionally excluded."
+  },
+  "phones": [
+    {
+      "id": "apple-iphone-17-pro",
+      "brand": "Apple",
+      "model": "iPhone 17 Pro",
+      "release": {
+        "year": 2025,
+        "announced_date": "2025-09-09",
+        "release_date": "2025-09-19"
+      },
+      "platform": {
+        "os": "iOS",
+        "chipset": "Apple A19 Pro"
+      },
+      "display": {
+        "size_in": 6.3,
+        "type": "Super Retina XDR OLED",
+        "resolution_px": { "w": 1206, "h": 2622 },
+        "refresh_hz": 120
+      },
+      "memory": {
+        "ram_gb": null,
+        "storage_gb_options": [256, 512, 1024]
+      },
+      "camera": {
+        "rear": [
+          { "name": "Main", "mp": 48, "ois": true },
+          { "name": "Ultra-wide", "mp": 48 },
+          { "name": "Telephoto", "mp": 12, "optical_zoom": "5x" }
+        ],
+        "front": [
+          { "name": "TrueDepth", "mp": 12 }
+        ]
+      },
+      "battery": {
+        "capacity_mah": null,
+        "charging_wired_w": null,
+        "charging_wireless_w": null
+      },
+      "build": {
+        "materials": "Aluminium frame, Ceramic Shield front and back",
+        "ip_rating": "IP68"
+      },
+      "dimensions": {
+        "size_mm": { "h": 150.0, "w": 71.9, "d": 8.75 },
+        "weight_g": 204
+      },
+      "connectivity": {
+        "cellular": "5G",
+        "wifi": "Wi-Fi 6E",
+        "bluetooth": "Bluetooth 5.3",
+        "usb": "USB-C"
+      },
+      "sources": {
+        "manufacturer": [
+          "https://www.apple.com/uk/iphone-17-pro/specs/",
+          "https://support.apple.com/en-gb/iphone"
+        ]
+      }
+    },
+
+    {
+      "id": "google-pixel-10-pro",
+      "brand": "Google",
+      "model": "Pixel 10 Pro",
+      "release": {
+        "year": 2025,
+        "announced_date": "2025-10-04",
+        "release_date": "2025-10-12"
+      },
+      "platform": {
+        "os": "Android",
+        "chipset": "Google Tensor G5"
+      },
+      "display": {
+        "size_in": 6.3,
+        "type": "LTPO OLED (Super Actua)",
+        "resolution_px": { "w": 1280, "h": 2856 },
+        "refresh_hz": "1–120"
+      },
+      "memory": {
+        "ram_gb": 16,
+        "storage_gb_options": [128, 256, 512, 1024]
+      },
+      "camera": {
+        "rear": [
+          { "name": "Wide", "mp": 50 },
+          { "name": "Ultra-wide", "mp": 48 },
+          { "name": "Telephoto", "mp": 48, "optical_zoom": "5x" }
+        ],
+        "front": [
+          { "name": "Selfie", "mp": 42 }
+        ]
+      },
+      "battery": {
+        "capacity_mah": 4870,
+        "charging_wired_w": 30,
+        "charging_wireless_w": 15
+      },
+      "build": {
+        "materials": "Aluminium frame, Gorilla Glass Victus 2",
+        "ip_rating": "IP68"
+      },
+      "connectivity": {
+        "cellular": "5G",
+        "wifi": "Wi-Fi 7",
+        "bluetooth": "Bluetooth 5.4",
+        "usb": "USB-C"
+      },
+      "sources": {
+        "manufacturer": [
+          "https://store.google.com/product/pixel_10_pro"
+        ]
+      }
+    },
+
+    {
+      "id": "google-pixel-10-pro-xl",
+      "brand": "Google",
+      "model": "Pixel 10 Pro XL",
+      "release": {
+        "year": 2025,
+        "announced_date": "2025-10-04",
+        "release_date": "2025-10-12"
+      },
+      "platform": {
+        "os": "Android",
+        "chipset": "Google Tensor G5"
+      },
+      "display": {
+        "size_in": 6.8,
+        "type": "LTPO OLED (Super Actua)",
+        "resolution_px": { "w": 1344, "h": 2992 },
+        "refresh_hz": "1–120"
+      },
+      "memory": {
+        "ram_gb": 16,
+        "storage_gb_options": [256, 512, 1024]
+      },
+      "battery": {
+        "capacity_mah": 5200,
+        "charging_wired_w": 45,
+        "charging_wireless_w": 25
+      },
+      "build": {
+        "materials": "Aluminium frame, Gorilla Glass Victus 2",
+        "ip_rating": "IP68"
+      },
+      "sources": {
+        "manufacturer": [
+          "https://store.google.com/product/pixel_10_pro"
+        ]
+      }
+    },
+
+    {
+      "id": "samsung-galaxy-s25-ultra",
+      "brand": "Samsung",
+      "model": "Galaxy S25 Ultra",
+      "release": {
+        "year": 2025,
+        "announced_date": "2025-01-22",
+        "release_date": "2025-01-22"
+      },
+      "platform": {
+        "os": "Android",
+        "chipset": "Snapdragon 8 Elite for Galaxy"
+      },
+      "display": {
+        "size_in": 6.9,
+        "type": "Dynamic AMOLED 2X",
+        "resolution_px": { "w": 1440, "h": 3120 },
+        "refresh_hz": "1–120"
+      },
+      "memory": {
+        "ram_gb": 12,
+        "storage_gb_options": [256, 512, 1024]
+      },
+      "camera": {
+        "rear": [
+          { "name": "Wide", "mp": 200 },
+          { "name": "Ultra-wide", "mp": 50 },
+          { "name": "Telephoto", "mp": 50, "optical_zoom": "5x" },
+          { "name": "Telephoto", "mp": 10, "optical_zoom": "3x" }
+        ],
+        "front": [
+          { "name": "Selfie", "mp": 12 }
+        ]
+      },
+      "battery": {
+        "capacity_mah": 5000,
+        "charging_wired_w": 45,
+        "charging_wireless_w": 15
+      },
+      "build": {
+        "materials": "Titanium frame, Gorilla Glass Armor",
+        "ip_rating": "IP68"
+      },
+      "sources": {
+        "manufacturer": [
+          "https://www.samsung.com/uk/smartphones/galaxy-s25-ultra/specs/"
+        ]
+      }
+    },
+
+    {
+      "id": "fairphone-6",
+      "brand": "Fairphone",
+      "model": "Fairphone (Gen. 6)",
+      "release": {
+        "year": 2025,
+        "announced_date": "2025-06-25",
+        "release_date": "2025-06-25"
+      },
+      "platform": {
+        "os": "Android (also available with /e/OS)",
+        "chipset": "Qualcomm Snapdragon 7s Gen 2"
+      },
+      "display": {
+        "size_in": 6.3,
+        "type": "OLED",
+        "resolution_px": { "w": 1080, "h": 2400 },
+        "refresh_hz": 120
+      },
+      "memory": {
+        "ram_gb": 8,
+        "storage_gb_options": [256],
+        "expandable": "microSD up to 2TB"
+      },
+      "battery": {
+        "capacity_mah": 4200,
+        "removable": true
+      },
+      "build": {
+        "materials": "Modular recycled materials",
+        "ip_rating": "IP55",
+        "repairability": "User-replaceable modules"
+      },
+      "sources": {
+        "manufacturer": [
+          "https://shop.fairphone.com/the-fairphone-gen-6"
+        ]
+      }
+    }
+  ]
+}
