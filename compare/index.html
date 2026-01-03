@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Phone Comparisons 2025 | SpecLedger</title>
+  <meta name="description" content="Compare the latest smartphones released in 2025. Side-by-side comparisons of iPhone, Pixel, Samsung Galaxy and Fairphone using manufacturer specifications." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://specledgerhq.github.io/spec-ledger/compare/" />
+
+  <!-- Basic styling (replace later with /assets/css/styles.css if you want) -->
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+      color: #222;
+    }
+    header, main, footer {
+      max-width: 1000px;
+      margin: auto;
+      padding: 1.5rem;
+    }
+    h1, h2 {
+      line-height: 1.3;
+    }
+    a {
+      color: #0b5fff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    .compare-list li {
+      margin-bottom: 0.5rem;
+    }
+    .note {
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Phone Comparisons (2025)</h1>
+    <p>
+      Side-by-side smartphone comparisons using <strong>official manufacturer specifications only</strong>.
+      SpecLedger focuses on accuracy, transparency, and fast-loading static pages.
+    </p>
+    <p>
+      <a href="/">← Back to home</a>
+    </p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Available comparisons</h2>
+      <p>
+        Below are curated comparisons between the most popular 2025 smartphones.
+        Each comparison highlights key differences in display, performance, camera, battery,
+        and build quality.
+      </p>
+
+      <ul class="compare-list" id="compareList">
+        <li>Loading comparisons…</li>
+      </ul>
+
+      <p class="note">
+        More comparisons will be added as additional manufacturer-verified devices are included.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p class="note">
+      Data source: Official manufacturer specification pages.  
+      This site is not affiliated with Apple, Google, Samsung, or other manufacturers.
+    </p>
+  </footer>
+
+  <script>
+    /*
+      This script:
+      - Loads the manufacturer-only phone dataset
+      - Generates sensible comparison pairs automatically
+      - Outputs crawlable <a href="..."> links
+    */
+
+    fetch("../data/phones-2025-manufacturer-only.json")
+      .then(response => response.json())
+      .then(data => {
+        const phones = data.phones || [];
+        const list = document.getElementById("compareList");
+        list.innerHTML = "";
+
+        if (phones.length < 2) {
+          list.innerHTML = "<li>No comparisons available yet.</li>";
+          return;
+        }
+
+        // Simple pairing strategy:
+        // Compare every phone against every other phone once
+        for (let i = 0; i < phones.length; i++) {
+          for (let j = i + 1; j < phones.length; j++) {
+            const a = phones[i];
+            const b = phones[j];
+
+            const slug =
+              a.id + "-vs-" + b.id + ".html";
+
+            const li = document.createElement("li");
+            const link = document.createElement("a");
+
+            link.href = slug;
+            link.textContent =
+              `${a.brand} ${a.model} vs ${b.brand} ${b.model}`;
+
+            li.appendChild(link);
+            list.appendChild(li);
+          }
+        }
+      })
+      .catch(err => {
+        document.getElementById("compareList").innerHTML =
+          "<li>Unable to load comparison data.</li>";
+        console.error(err);
+      });
+  </script>
+</body>
+  </html>
