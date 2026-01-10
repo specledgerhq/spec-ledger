@@ -1,5 +1,5 @@
 // SpecLedger - Site JavaScript
-// Phone comparison functionality and future enhancements
+// Phone comparison functionality for dynamic and programmatic pages
 
 (function() {
   'use strict';
@@ -27,7 +27,20 @@
     return ids ? ids.split(',').map(id => id.trim()) : [];
   }
 
-  // Display list of available phones
+  // Get comparison IDs from data-ids attribute or query params
+  function getComparisonIds() {
+    // First check for data-ids attribute on comparison page section
+    const comparisonSection = document.querySelector('[data-ids]');
+    if (comparisonSection) {
+      const dataIds = comparisonSection.getAttribute('data-ids');
+      return dataIds ? dataIds.split(',').map(id => id.trim()) : [];
+    }
+    
+    // Fall back to query parameters
+    return getQueryParams();
+  }
+
+  // Display list of available phones (for phone-compare.html)
   async function displayPhonesList() {
     const phonesList = document.getElementById('phones-list');
     if (!phonesList) return;
@@ -58,9 +71,38 @@
     return String(value);
   }
 
+  // Update page title and meta description for programmatic pages
+  function updatePageMeta(selectedPhones) {
+    if (selectedPhones.length === 0) return;
+
+    // Build comparison string (e.g., "Pixel 10 vs Pixel 10 Pro")
+    const models = selectedPhones.map(p => `${p.brand} ${p.model}`).join(' vs ');
+    
+    // Update title
+    const titleElement = document.querySelector('title');
+    if (titleElement) {
+      titleElement.textContent = `${models} – Specs Comparison – SpecLedger`;
+    }
+
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        'content',
+        `Compare ${models} side-by-side using official manufacturer specifications. SpecLedger provides specification-based product comparisons.`
+      );
+    }
+
+    // Update H1 heading
+    const pageTitle = document.getElementById('page-title');
+    if (pageTitle) {
+      pageTitle.textContent = models;
+    }
+  }
+
   // Generate comparison table from selected phones
   async function generateComparisonTable() {
-    const selectedIds = getQueryParams();
+    const selectedIds = getComparisonIds();
     const tableHeader = document.getElementById('header-row');
     const tableBody = document.getElementById('table-body');
     const errorMessage = document.getElementById('error-message');
@@ -86,6 +128,9 @@
         tableBody.innerHTML = '<tr><td class="spec-label">No phones found with provided IDs.</td></tr>';
         return;
       }
+
+      // Update page meta for programmatic pages
+      updatePageMeta(selectedPhones);
 
       // Build header row with phone names
       tableHeader.innerHTML = '<th class="spec-label">Specification</th>' +
@@ -154,11 +199,16 @@
 
   // Initialize site on page load
   function init() {
-    // Check if we're on the comparison page
+    // Check if we're on a comparison page
     const comparisonTable = document.getElementById('comparison-table');
     if (comparisonTable) {
       generateComparisonTable();
-      displayPhonesList();
+      
+      // Display phones list only on phone-compare.html (dynamic page)
+      const phonesList = document.getElementById('phones-list');
+      if (phonesList) {
+        displayPhonesList();
+      }
     }
   }
 

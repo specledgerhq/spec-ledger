@@ -454,6 +454,19 @@ section {
   text-align: center;
 }
 
+.comparison-navigation {
+  display: flex;
+  gap: var(--spacing-md);
+  margin: var(--spacing-2xl) 0 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.comparison-navigation .btn {
+  flex: 1;
+  min-width: 150px;
+}
+
 /* Footer */
 .footer-content {
   max-width: var(--max-width);
