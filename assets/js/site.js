@@ -157,6 +157,128 @@
     }
   }
 
+  // Populate comparison builder dropdowns with available phones
+  async function populateComparisonDropdowns() {
+    const select1 = document.getElementById('phone-select-1');
+    const select2 = document.getElementById('phone-select-2');
+    
+    if (!select1 || !select2) return; // Not on phone-compare.html
+
+    try {
+      const phones = await fetchPhonesData();
+      if (phones.length === 0) {
+        const errorDiv = document.getElementById('builder-error');
+        if (errorDiv) {
+          errorDiv.textContent = 'No phones available in database.';
+          errorDiv.style.display = 'block';
+        }
+        return;
+      }
+
+      // Create option elements for each phone
+      const optionsHTML = phones
+        .map(phone => `<option value="${phone.id}">${phone.brand} ${phone.model} (${phone.release_year})</option>`)
+        .join('');
+
+      // Populate both dropdowns
+      select1.innerHTML = '<option value="">Select a phone...</option>' + optionsHTML;
+      select2.innerHTML = '<option value="">Select a phone...</option>' + optionsHTML;
+
+      // Add change listeners to prevent same phone selection
+      select1.addEventListener('change', validatePhoneSelection);
+      select2.addEventListener('change', validatePhoneSelection);
+    } catch (error) {
+      console.error('Error populating dropdowns:', error);
+      const errorDiv = document.getElementById('builder-error');
+      if (errorDiv) {
+        errorDiv.textContent = 'Error loading phone options.';
+        errorDiv.style.display = 'block';
+      }
+    }
+  }
+
+  // Validate that different phones are selected
+  function validatePhoneSelection() {
+    const select1 = document.getElementById('phone-select-1');
+    const select2 = document.getElementById('phone-select-2');
+    const compareBtn = document.getElementById('compare-btn');
+    const errorDiv = document.getElementById('builder-error');
+
+    if (!select1 || !select2 || !compareBtn) return;
+
+    const val1 = select1.value;
+    const val2 = select2.value;
+
+    // Hide error message initially
+    if (errorDiv) {
+      errorDiv.style.display = 'none';
+    }
+
+    // Check if both phones are selected
+    if (val1 && val2) {
+      // Check if same phone is selected
+      if (val1 === val2) {
+        compareBtn.disabled = true;
+        if (errorDiv) {
+          errorDiv.textContent = 'Please select different phones to compare.';
+          errorDiv.style.display = 'block';
+        }
+      } else {
+        compareBtn.disabled = false;
+      }
+    } else {
+      compareBtn.disabled = true;
+    }
+  }
+
+  // Handle comparison builder form submission
+  function handleComparisonBuilder() {
+    const compareBtn = document.getElementById('compare-btn');
+    if (!compareBtn) return;
+
+    compareBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      const select1 = document.getElementById('phone-select-1');
+      const select2 = document.getElementById('phone-select-2');
+      const errorDiv = document.getElementById('builder-error');
+
+      if (!select1 || !select2) return;
+
+      const val1 = select1.value;
+      const val2 = select2.value;
+
+      // Validate selections
+      if (!val1 || !val2) {
+        if (errorDiv) {
+          errorDiv.textContent = 'Please select both phones.';
+          errorDiv.style.display = 'block';
+        }
+        return;
+      }
+
+      if (val1 === val2) {
+        if (errorDiv) {
+          errorDiv.textContent = 'Please select different phones to compare.';
+          errorDiv.style.display = 'block';
+        }
+        return;
+      }
+
+      // Clear error message
+      if (errorDiv) {
+        errorDiv.style.display = 'none';
+      }
+
+      // Update URL and regenerate comparison
+      const newUrl = `?ids=${val1},${val2}`;
+      window.history.pushState({ ids: [val1, val2] }, '', newUrl);
+
+      // Generate the comparison table
+      generateComparisonTable();
+    });
+  }
+
   // Flatten nested object values for display
   function flattenValue(value) {
     if (value === null || value === undefined) {
@@ -312,6 +434,10 @@
       const phonesList = document.getElementById('phones-list');
       if (phonesList) {
         displayPhonesList();
+        
+        // Populate and initialize comparison builder dropdowns
+        populateComparisonDropdowns();
+        handleComparisonBuilder();
       }
     }
   }
@@ -323,3 +449,5 @@
     init();
   }
 })();
+
+```

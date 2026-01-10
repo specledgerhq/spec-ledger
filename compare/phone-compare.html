@@ -31,6 +31,29 @@
         <p><strong>Data Source:</strong> All specifications on this page are sourced from official manufacturer datasheets and published technical documentation. No third-party benchmarks or opinions are included.</p>
       </div>
 
+      <!-- Comparison Builder Section -->
+      <section class="comparison-builder">
+        <h3>Build Your Own Comparison</h3>
+        <form id="comparison-form" class="comparison-controls">
+          <div class="form-group">
+            <label for="phone-select-1">First Phone</label>
+            <select id="phone-select-1" name="phone1" required aria-label="Select first phone for comparison">
+              <option value="">Select a phone...</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="phone-select-2">Second Phone</label>
+            <select id="phone-select-2" name="phone2" required aria-label="Select second phone for comparison">
+              <option value="">Select a phone...</option>
+            </select>
+          </div>
+
+          <button type="button" id="compare-btn" class="btn btn-primary" aria-label="Compare selected phones">Compare</button>
+        </form>
+        <div id="builder-error" class="error-message" style="display: none;"></div>
+      </section>
+
       <div class="comparison-table-wrapper">
         <table id="comparison-table" class="comparison-table">
           <thead>
@@ -40,7 +63,7 @@
           </thead>
           <tbody id="table-body">
             <tr>
-              <td class="spec-label">Loading comparison data...</td>
+              <td class="spec-label">Select two phones above to compare</td>
             </tr>
           </tbody>
         </table>
@@ -50,9 +73,9 @@
 
       <div class="comparison-info">
         <h3>How to Use</h3>
-        <p>Add phone IDs to the URL query string to compare them. For example:</p>
+        <p>Use the dropdowns above to select phones and click "Compare". You can also add phone IDs to the URL query string directly. For example:</p>
         <pre><code>/compare/phone-compare.html?ids=google-pixel-10,google-pixel-10-pro</code></pre>
-        <p>Phone IDs are derived from the data source. Check the available phones list below.</p>
+        <p>Phone IDs are derived from the data source. Available phones are listed in the dropdown menus.</p>
       </div>
 
       <div class="available-phones">
