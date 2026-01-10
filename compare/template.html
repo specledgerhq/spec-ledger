@@ -1,12 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+  TEMPLATE: Programmatic Comparison Page
+  
+  PURPOSE:
+  This file is a template for creating new programmatic comparison pages.
+  Programmatic pages are SEO-friendly static HTML files that use the data-ids attribute
+  to specify which products to compare. They enable fast, indexable comparisons without
+  query parameters.
+  
+  BULK GENERATION GUIDE:
+  
+  To create a new comparison page:
+  
+  1. Copy this entire file to a new filename following the pattern:
+     google-pixel-{model}-vs-google-pixel-{model}.html
+     Examples:
+     - google-pixel-10-vs-google-pixel-9-pro.html
+     - google-pixel-10-pro-xl-vs-samsung-galaxy-s25.html
+  
+  2. Replace placeholders (below) with actual values:
+     - REPLACE: "ID1" with the first product ID from data/phones.json
+     - REPLACE: "ID2" with the second product ID from data/phones.json
+     - REPLACE: "Product 1 Name" with first product name
+     - REPLACE: "Product 2 Name" with second product name
+     - REPLACE: "product-1-url-name" with first product filename component
+     - REPLACE: "product-2-url-name" with second product filename component
+  
+  3. Verify the canonical URL matches the file's actual URL.
+  
+  4. Add the page to index.html in the "Popular Phone Comparisons" section.
+  
+  5. Add cross-references in "Related Comparisons" sections on similar pages.
+  
+  CRAWL BUDGET STRATEGY:
+  - Only create pages for meaningful product comparisons (same category/brand/generation).
+  - Avoid generating every possible combination to prevent crawl budget waste.
+  - Limit to ~5-10 curated comparisons initially, then expand based on user demand.
+  - Use the dynamic page (phone-compare.html) for ad-hoc comparisons.
+  
+  SEO REQUIREMENTS (all auto-handled by site.js):
+  - ✓ Unique <title> with product names and "Specs Comparison" suffix
+  - ✓ Unique meta description with comparison context
+  - ✓ data-ids attribute matching products in data/phones.json
+  - ✓ Self-referential canonical URL
+  - ✓ robots meta set to "index, follow"
+  - ✓ JSON-LD Product schema generated dynamically by JavaScript
+  
+  MAINTENANCE NOTES:
+  - If product IDs in data/phones.json change, update data-ids attribute.
+  - If products are deprecated, set robots to "noindex, follow" and keep page for internal links.
+  - Monitor Search Console for 404 errors if data is removed.
+-->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Compare phones side-by-side using official manufacturer specifications. SpecLedger provides specification-based product comparisons.">
+  <meta name="description" content="REPLACE: Compare Product 1 Name vs Product 2 Name side-by-side using official manufacturer specifications. SpecLedger provides specification-based product comparisons.">
   <meta name="robots" content="index, follow">
-  <title>Phone Specification Comparison – SpecLedger</title>
-  <!-- Canonical URL: Set to current page URL (JavaScript will update for proper canonical) -->
+  <title>REPLACE: Product 1 Name vs Product 2 Name – Specs Comparison – SpecLedger</title>
+  <link rel="canonical" href="https://specledgerhq.github.io/spec-ledger/compare/REPLACE-product-1-url-name-vs-REPLACE-product-2-url-name.html">
   <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body>
@@ -24,8 +76,9 @@
   </header>
 
   <main>
-    <section class="comparison-page">
-      <h1 id="page-title">Phone Specification Comparison</h1>
+    <!-- data-ids: Comma-separated product IDs from data/phones.json (no spaces) -->
+    <section class="comparison-page" data-ids="REPLACE-ID1,REPLACE-ID2">
+      <h1 id="page-title">REPLACE: Product 1 Name vs Product 2 Name</h1>
       
       <div class="comparison-disclaimer">
         <p><strong>Data Source:</strong> All specifications on this page are sourced from official manufacturer datasheets and published technical documentation. No third-party benchmarks or opinions are included.</p>
@@ -47,6 +100,15 @@
       </div>
 
       <div id="error-message" class="error-message" style="display: none;"></div>
+
+      <!-- Related Comparisons: Add 2-3 links to similar comparison pages for internal linking SEO -->
+      <section class="related-comparisons">
+        <h2>Related Comparisons</h2>
+        <ul class="related-links">
+          <li><a href="google-pixel-10-vs-google-pixel-10-pro.html">Related page 1</a></li>
+          <li><a href="google-pixel-10-pro-vs-google-pixel-10-pro-xl.html">Related page 2</a></li>
+        </ul>
+      </section>
 
       <div class="comparison-navigation">
         <a href="../" class="btn btn-primary">Back to Home</a>

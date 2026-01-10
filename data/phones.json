@@ -43,5 +43,74 @@
     },
     "os": "Android 16",
     "source_url": "https://store.google.com/product/pixel_10_pro_specs"
+  },
+  {
+    "id": "google-pixel-10-pro-xl",
+    "brand": "Google",
+    "model": "Pixel 10 Pro XL",
+    "release_year": 2025,
+    "display": {
+      "size_inches": 7.0,
+      "type": "OLED",
+      "resolution": "3200 x 1500"
+    },
+    "chipset": "Google Tensor G5",
+    "ram_gb": 16,
+    "storage_gb": 512,
+    "battery_mah": 6200,
+    "camera": {
+      "main_mp": 50,
+      "ultrawide_mp": 12,
+      "telephoto_mp": 48,
+      "periscope_mp": 10,
+      "selfie_mp": 10
+    },
+    "os": "Android 16",
+    "source_url": "https://store.google.com/product/pixel_10_pro_xl_specs"
+  },
+  {
+    "id": "google-pixel-9",
+    "brand": "Google",
+    "model": "Pixel 9",
+    "release_year": 2024,
+    "display": {
+      "size_inches": 6.3,
+      "type": "OLED",
+      "resolution": "2992 x 1344"
+    },
+    "chipset": "Google Tensor G4",
+    "ram_gb": 8,
+    "storage_gb": 128,
+    "battery_mah": 4700,
+    "camera": {
+      "main_mp": 50,
+      "ultrawide_mp": 12,
+      "selfie_mp": 10
+    },
+    "os": "Android 15",
+    "source_url": "https://store.google.com/product/pixel_9_specs"
+  },
+  {
+    "id": "google-pixel-9-pro",
+    "brand": "Google",
+    "model": "Pixel 9 Pro",
+    "release_year": 2024,
+    "display": {
+      "size_inches": 6.8,
+      "type": "OLED",
+      "resolution": "3120 x 1440"
+    },
+    "chipset": "Google Tensor G4",
+    "ram_gb": 16,
+    "storage_gb": 256,
+    "battery_mah": 5500,
+    "camera": {
+      "main_mp": 50,
+      "ultrawide_mp": 12,
+      "telephoto_mp": 48,
+      "selfie_mp": 10
+    },
+    "os": "Android 15",
+    "source_url": "https://store.google.com/product/pixel_9_pro_specs"
   }
 ]
