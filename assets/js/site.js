@@ -187,6 +187,16 @@
       // Add change listeners to prevent same phone selection
       select1.addEventListener('change', validatePhoneSelection);
       select2.addEventListener('change', validatePhoneSelection);
+
+      // If URL parameters exist, pre-select them
+      const comparisonIds = getComparisonIds();
+      if (comparisonIds.length >= 2) {
+        select1.value = comparisonIds[0];
+        select2.value = comparisonIds[1];
+      }
+
+      // Validate after setting values
+      validatePhoneSelection();
     } catch (error) {
       console.error('Error populating dropdowns:', error);
       const errorDiv = document.getElementById('builder-error');
@@ -428,16 +438,29 @@
     // Check if we're on a comparison page
     const comparisonTable = document.getElementById('comparison-table');
     if (comparisonTable) {
-      generateComparisonTable();
-      
-      // Display phones list only on phone-compare.html (dynamic page)
+      // Check if this is the dynamic phone-compare.html page
       const phonesList = document.getElementById('phones-list');
-      if (phonesList) {
+      const comparisonForm = document.getElementById('comparison-form');
+      
+      if (phonesList && comparisonForm) {
+        // This is phone-compare.html - always populate dropdowns and enable builder
         displayPhonesList();
         
-        // Populate and initialize comparison builder dropdowns
+        // Populate dropdowns (will pre-select if URL params exist)
         populateComparisonDropdowns();
+        
+        // Initialize comparison builder handlers
         handleComparisonBuilder();
+        
+        // If URL params exist, generate the comparison table immediately
+        const comparisonIds = getComparisonIds();
+        if (comparisonIds.length >= 2) {
+          generateComparisonTable();
+        }
+      } else {
+        // This is a programmatic comparison page (data-ids attribute)
+        // Generate comparison table from data-ids
+        generateComparisonTable();
       }
     }
   }
