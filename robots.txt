@@ -1,0 +1,46 @@
+# SpecLedger robots.txt
+# This file guides search engines on how to crawl the site
+# Reference: https://developers.google.com/search/docs/beginner/robots-txt
+
+# Allow all user agents to crawl the site
+User-agent: *
+Allow: /
+
+# Explicitly allow important directories for clarity
+Allow: /assets/
+Allow: /data/
+Allow: /compare/
+
+# Specify sitemap location for search engines
+# The sitemap includes only indexable pages (no query parameter URLs)
+Sitemap: https://specledgerhq.github.io/spec-ledger/sitemap.xml
+
+# CRAWL DELAY SETTINGS
+# These settings are optional and tell well-behaved crawlers to wait between requests
+# Adjust if experiencing server load issues (not needed for GitHub Pages)
+Crawl-delay: 1
+
+# STRATEGY NOTES:
+# 
+# INDEXABLE PAGES:
+# - / (homepage)
+# - /compare/google-pixel-*.html (programmatic comparison pages)
+# These pages have <meta name="robots" content="index, follow">
+# 
+# NON-INDEXABLE PAGES:
+# - /compare/phone-compare.html (dynamic page with query parameters)
+# This page has <meta name="robots" content="noindex, follow"> when accessed with query parameters
+# The robots.txt allows crawling, but the page's meta tag tells search engines not to index it
+# This prevents duplicate content from variations like:
+#   - ?ids=google-pixel-10,google-pixel-10-pro
+#   - ?ids=google-pixel-10-pro,google-pixel-10
+#
+# The "follow" directive ensures internal links are still discovered even on non-indexed pages
+#
+# SITEMAP INCLUSION:
+# The sitemap.xml only includes programmatic pages (clean, indexable URLs)
+# This guides search engines to the canonical versions of comparisons
+#
+# For more information on this strategy, see:
+# - https://developers.google.com/search/docs/beginner/manage-crawling
+# - https://developers.google.com/search/docs/advanced/robots/robots_txt

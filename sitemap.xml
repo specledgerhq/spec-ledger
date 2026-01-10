@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SpecLedger Sitemap
+  
+  This XML sitemap contains all indexable pages on SpecLedger.
+  It is used by search engines to discover and crawl content more efficiently.
+  
+  INDEXABLE PAGES (included in this sitemap):
+  - Homepage (index.html)
+  - Programmatic comparison pages (static, SEO-friendly URLs without query parameters)
+  
+  EXCLUDED PAGES (intentionally not included):
+  - Dynamic comparison page (compare/phone-compare.html) - contains query parameters
+    The robots meta tag on this page is set to "noindex, follow" by JavaScript
+    to prevent duplicate content from query parameter variations
+  - Template pages - used only for reference, not meant to be crawled
+  - Utility pages - development or reference only
+  
+  MAINTENANCE NOTES:
+  When adding new programmatic comparison pages:
+  1. Create the page in /compare/ with a descriptive filename
+  2. Add a <url> entry below with:
+     - <loc>: full URL to the page
+     - <lastmod>: ISO date when page was created/updated
+     - <changefreq>: how often content is expected to change (weekly, monthly, etc.)
+     - <priority>: relative priority (1.0 for homepage, 0.8 for comparisons)
+  3. Keep URLs sorted for readability
+  4. Validate the sitemap using: https://www.xml-sitemaps.com/validate-xml-sitemap.html
+  
+  CURRENT STRATEGY:
+  - Homepage: priority 1.0 (most important)
+  - Programmatic comparison pages: priority 0.8 (high value content)
+  - All pages: changefreq "weekly" (content rarely changes)
+  
+  Last generated: 2026-01-10
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://specledgerhq.github.io/spec-ledger/</loc>
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Programmatic Comparison Pages -->
+  <!-- These are static pages with clean URLs (no query parameters) -->
+  <!-- Each page includes data-ids attribute that triggers JavaScript comparison logic -->
+  
+  <url>
+    <loc>https://specledgerhq.github.io/spec-ledger/compare/google-pixel-10-vs-google-pixel-10-pro.html</loc>
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://specledgerhq.github.io/spec-ledger/compare/google-pixel-10-vs-google-pixel-10-pro-xl.html</loc>
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://specledgerhq.github.io/spec-ledger/compare/google-pixel-10-pro-vs-google-pixel-10-pro-xl.html</loc>
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://specledgerhq.github.io/spec-ledger/compare/google-pixel-10-vs-google-pixel-9.html</loc>
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://specledgerhq.github.io/spec-ledger/compare/google-pixel-10-pro-vs-google-pixel-9-pro.html</loc>
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://specledgerhq.github.io/spec-ledger/compare/google-pixel-9-vs-google-pixel-9-pro.html</loc>
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://specledgerhq.github.io/spec-ledger/compare/google-pixel-10-vs-10-pro-vs-10-pro-xl.html</loc>
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
