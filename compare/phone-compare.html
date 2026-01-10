@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Compare phones side-by-side using official manufacturer specifications. SpecLedger provides specification-based product comparisons.">
+  <meta name="robots" content="index, follow">
+  <title>Phone Specification Comparison – SpecLedger</title>
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo-section">
+        <h1><a href="../" style="text-decoration: none; color: inherit;">SpecLedger</a></h1>
+        <p class="tagline">Specification-Based Product Comparisons</p>
+      </div>
+      <nav class="main-nav">
+        <a href="../#comparisons">Comparisons</a>
+        <a href="../#methodology">Methodology</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="comparison-page">
+      <h2>Phone Specification Comparison</h2>
+      
+      <div class="comparison-disclaimer">
+        <p><strong>Data Source:</strong> All specifications on this page are sourced from official manufacturer datasheets and published technical documentation. No third-party benchmarks or opinions are included.</p>
+      </div>
+
+      <div class="comparison-table-wrapper">
+        <table id="comparison-table" class="comparison-table">
+          <thead>
+            <tr id="header-row">
+              <th class="spec-label">Specification</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <tr>
+              <td class="spec-label">Loading comparison data...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="error-message" class="error-message" style="display: none;"></div>
+
+      <div class="comparison-info">
+        <h3>How to Use</h3>
+        <p>Add phone IDs to the URL query string to compare them. For example:</p>
+        <pre><code>/compare/phone-compare.html?ids=google-pixel-10,google-pixel-10-pro</code></pre>
+        <p>Phone IDs are derived from the data source. Check the available phones list below.</p>
+      </div>
+
+      <div class="available-phones">
+        <h3>Available Phones</h3>
+        <ul id="phones-list">
+          <li>Loading phone list...</li>
+        </ul>
+      </div>
+
+      <div class="back-to-home">
+        <a href="../" class="btn btn-primary">Back to Home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 SpecLedger. All product names and specifications are property of their respective manufacturers.</p>
+      <p class="footer-disclaimer">This site uses official manufacturer specifications only. Product names, logos, and specifications are trademarks of their respective owners.</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>
