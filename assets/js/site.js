@@ -1,5 +1,5 @@
 // SpecLedger - Site JavaScript
-// Phone comparison functionality for dynamic and programmatic pages
+// Phone comparison functionality with SEO hardening
 
 (function() {
   'use strict';
@@ -27,6 +27,11 @@
     return ids ? ids.split(',').map(id => id.trim()) : [];
   }
 
+  // Check if page has query parameters (for dynamic comparison pages)
+  function hasQueryParams() {
+    return window.location.search.length > 0;
+  }
+
   // Get comparison IDs from data-ids attribute or query params
   function getComparisonIds() {
     // First check for data-ids attribute on comparison page section
@@ -38,6 +43,98 @@
     
     // Fall back to query parameters
     return getQueryParams();
+  }
+
+  // Check if we're on a programmatic comparison page (data-ids attribute)
+  function isProgrammaticPage() {
+    return document.querySelector('[data-ids]') !== null;
+  }
+
+  // Add robots meta tag for SEO control
+  function setRobotsMeta() {
+    // Dynamic pages with query params should not be indexed
+    if (hasQueryParams() && !isProgrammaticPage()) {
+      let robotsMeta = document.querySelector('meta[name="robots"]');
+      if (!robotsMeta) {
+        robotsMeta = document.createElement('meta');
+        robotsMeta.setAttribute('name', 'robots');
+        document.head.appendChild(robotsMeta);
+      }
+      // noindex, follow: don't index but follow links
+      robotsMeta.setAttribute('content', 'noindex, follow');
+    }
+  }
+
+  // Add canonical URL for SEO
+  function setCanonicalUrl() {
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
+    }
+
+    // For programmatic pages, canonical is the page itself without params
+    // For dynamic pages with query params, canonical is the page without params
+    const currentPath = window.location.pathname;
+    const canonicalUrl = window.location.origin + currentPath;
+    canonicalLink.setAttribute('href', canonicalUrl);
+  }
+
+  // Add structured data (JSON-LD) for products in comparison
+  function addStructuredData(selectedPhones) {
+    if (selectedPhones.length === 0) return;
+
+    try {
+      // Build Product schema for each phone
+      const products = selectedPhones.map(phone => ({
+        "@type": "Product",
+        "name": `${phone.brand} ${phone.model}`,
+        "brand": {
+          "@type": "Brand",
+          "name": phone.brand
+        },
+        "model": phone.model,
+        "releaseDate": `${phone.release_year}`,
+        "specs": {
+          "@type": "PropertyValue",
+          "name": "Technical Specifications",
+          "description": "Official manufacturer specifications"
+        }
+      }));
+
+      // Create comparison dataset schema
+      const comparisonSchema = {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": selectedPhones.map(p => `${p.brand} ${p.model}`).join(" vs "),
+        "description": `Detailed specification comparison between ${selectedPhones.map(p => `${p.brand} ${p.model}`).join(" and ")}. All specifications sourced from official manufacturer documentation.`,
+        "url": window.location.href,
+        "isBasedOn": "Official manufacturer product specifications",
+        "hasPart": products
+      };
+
+      // Check if structured data already exists
+      let structuredDataScript = document.querySelector('script[type="application/ld+json"]:not([data-product-schema])');
+      if (structuredDataScript && structuredDataScript.textContent.includes('Dataset')) {
+        // Dataset schema already exists, add product schema
+        structuredDataScript = null;
+      }
+
+      // Add product schema if not already present
+      const existingProductSchema = document.querySelector('script[data-product-schema="true"]');
+      if (!existingProductSchema) {
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.setAttribute('data-product-schema', 'true');
+        script.textContent = JSON.stringify(comparisonSchema);
+        document.head.appendChild(script);
+      }
+    } catch (error) {
+      console.error('Error adding structured data:', error);
+      // Gracefully fail - site still works without structured data
+    }
   }
 
   // Display list of available phones (for phone-compare.html)
@@ -132,6 +229,9 @@
       // Update page meta for programmatic pages
       updatePageMeta(selectedPhones);
 
+      // Add structured data for SEO
+      addStructuredData(selectedPhones);
+
       // Build header row with phone names
       tableHeader.innerHTML = '<th class="spec-label">Specification</th>' +
         selectedPhones
@@ -199,6 +299,10 @@
 
   // Initialize site on page load
   function init() {
+    // Apply SEO hardening to all pages
+    setRobotsMeta();
+    setCanonicalUrl();
+
     // Check if we're on a comparison page
     const comparisonTable = document.getElementById('comparison-table');
     if (comparisonTable) {
